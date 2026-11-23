@@ -41,7 +41,7 @@ class Photocard extends Model
     }
 
     public function scopeFilter(Builder $query, array $filters): Builder
-{
+    {
     return $query
         ->when($filters['status'] ?? null, function (Builder $q, string $status) {
             $q->where('status', $status);
@@ -62,5 +62,5 @@ class Photocard extends Model
                     ->orWhere('version', 'like', "%{$term}%");
             });
         });
-}
+    }
 }

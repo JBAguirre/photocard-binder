@@ -2,28 +2,26 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
+use App\Enums\CardType;
+use App\Enums\PhotocardStatus;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class IndexPhotocardRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'status' => ['nullable', Rule::enum(PhotocardStatus::class)],
+            'card_type' => ['nullable', Rule::enum(CardType::class)],
+            'group' => ['nullable', 'string', 'max:100'],
+            'member' => ['nullable', 'string', 'max:100'],
+            'q' => ['nullable', 'string', 'max:100'],
         ];
     }
 }

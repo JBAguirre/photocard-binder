@@ -10,16 +10,19 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use App\Http\Requests\IndexPhotocardRequest;
 
 class PhotocardController extends Controller
 {
-    public function index(Request $request): AnonymousResourceCollection
+    public function index(IndexPhotocardRequest $request): AnonymousResourceCollection
     {
         $cards = $request->user()
             ->photocards()
+            ->filter($request->validated())
             ->latest()
             ->latest('id')
-            ->paginate(12);
+            ->paginate(12)
+            ->withQueryString();
 
         return PhotocardResource::collection($cards);
     }
