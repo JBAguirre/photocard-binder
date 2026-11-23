@@ -17,7 +17,7 @@ class PhotocardFactory extends Factory
             'group_name' => fake()->randomElement(['NewJeans', 'IVE', 'aespa', 'LE SSERAFIM', 'Stray Kids']),
             'member_name' => fake()->firstName(),
             'album' => fake()->words(2, true),
-            'version' => 'Ver. ' . fake()->randomElement(['A', 'B', 'C']),
+            'version' => 'Ver. '.fake()->randomElement(['A', 'B', 'C']),
             'card_type' => fake()->randomElement(CardType::cases()),
             'status' => fake()->randomElement(PhotocardStatus::cases()),
             'condition' => fake()->randomElement(CardCondition::cases()),
