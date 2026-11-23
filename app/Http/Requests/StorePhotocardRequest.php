@@ -28,6 +28,7 @@ class StorePhotocardRequest extends FormRequest
             'status' => ['required', Rule::enum(PhotocardStatus::class)],
             'condition' => ['nullable', Rule::enum(CardCondition::class)],
             'notes' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }
 
