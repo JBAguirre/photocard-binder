@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('FILESYSTEM_DISK', 'local'),
+    'photocard_disk' => env('PHOTOCARD_DISK', 's3'),
 
     /*
     |--------------------------------------------------------------------------
